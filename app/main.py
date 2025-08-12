@@ -2,7 +2,12 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 import os
+import uvicorn
 
+from app import models
+from app.database import engine
+
+# Import routers
 from app.routers import (
     linear_regression,
     cnn_image_classification,
@@ -13,7 +18,9 @@ from app.routers import (
     clip_multimodal,
     alphafold
 )
-import uvicorn
+
+# Create DB tables if they don't exist
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="AI CRUD for All Models")
 
@@ -35,7 +42,7 @@ def home():
             <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
         </head>
         <body>
-            <h1>Welcome to AI CRUD for All Models</h1>
+            <h1>Welcome to AI CRUD - Create, Read, Update, and Delete for All Models</h1>
             <ul>
                 <li><a href="/docs#/Linear%20Regression">Linear Regression</a></li>
                 <li><a href="/docs#/CNN%20Image%20Classification">CNN Image Classification</a></li>
