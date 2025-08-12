@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+scikit-learn
+torch
+transformers
+opencv-python
+pillow
+numpy

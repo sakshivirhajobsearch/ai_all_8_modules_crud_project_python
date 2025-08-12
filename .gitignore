@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+.env
+venv/
+.vscode/
+.idea/
+*.pt
+*.pth
+*.h5
+*.onnx
+*.weights
+*.ckpt
